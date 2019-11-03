@@ -29,6 +29,10 @@ export class Main {
     };
 
     navUndo() {
+        if (this.appMode == AppMode.Start) {
+            return;
+        }
+
         if (this.sessionInfo.repetitionHistory.length > 0) {
             let rep = this.sessionInfo.repetitionHistory.pop();
             if (rep.change != 0) {
@@ -112,6 +116,10 @@ export class Main {
         }
     }
     navBack() {
+        if (this.appMode == AppMode.Start) {
+            return;
+        }
+        
         if (this.sessionInfo.wordHistory.length > 0) {
             this.setWord(this.sessionInfo.wordHistory.pop(), false);
         } else {
