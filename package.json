@@ -1,0 +1,40 @@
+{
+  "name": "sagas_abc",
+  "version": "1.0.0",
+  "description": "",
+  "main": "src/app.js",
+  "postinstall": "electron-builder install-app-deps",
+  "scripts": {
+    "build": "tsc",
+    "test": "electron ./app.js",
+    "pack": "electron-builder --dir",
+    "dist": "electron-builder --win",
+    "distportable": "electron-builder --win portable"
+  },
+  "build": {
+    "asar": false,
+    "appId": "com.fumbbl.sagasabc",
+    "productName": "Sagas ABC",
+    "nsis": {
+      "oneClick": false
+    }
+  },
+  "author": "Christer Kaivo-oja <christer@fumbbl.com>",
+  "license": "ISC",
+  "devDependencies": {
+    "electron": "^7.0.1",
+    "electron-builder": "^22.1.0",
+    "jquery": "^3.4.1",
+    "mocha": "^6.2.2",
+    "popper": "^1.0.1"
+  },
+  "dependencies": {
+    "@types/electron-settings": "^3.1.1",
+    "bootstrap": "^4.3.1",
+    "electron-settings": "^3.2.0",
+    "i18next": "^19.0.0",
+    "jquery": "^3.4.1",
+    "mocha": "^6.2.2",
+    "popper.js": "^1.16.0"
+  }
+}

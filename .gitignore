@@ -1,0 +1,7 @@
+node_modules/
+src/**/*.js.map
+htdocs/script/main.js.map
+htdocs/script/main.js
+htdocs/script/bindings.js.map
+htdocs/script/bindings.js
+src/**/*.js

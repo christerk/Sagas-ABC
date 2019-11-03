@@ -1,0 +1,176 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <link rel="stylesheet" href="style/bootstrap.min.css" />
+        <link rel="stylesheet" href="style/main.css" />
+        <script>var exports = {"__esModule": true};</script>
+
+        <script src="script/jquery.min.js"></script>
+        <script src="script/popper.js"></script>
+        <script src="script/bootstrap.min.js"></script>
+        
+        <script src="script/bindings.js"></script>
+        <script src="script/main.js"></script>
+
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+    </head>
+    <body>
+
+        <div class="container-fluid position-absolute fixed-top w-100 h-60" style="margin-top: 20%">
+            <div class="row h-100 align-items-center">
+                <div id="word" bind="app.word" class="col display-1 text-center">
+                    Hello
+                </div>
+            </div>
+        </div>
+        
+        <nav class="navbar navbar-expand-lg navbar-primary bg-primary">
+            <div class="container-fluid d-flex justify-content-between">
+                <button id="startbutton" class="btn btn-primary" type="button" i18n="Start">Start</a>
+                <button class="btn btn-primary" type="button" data-toggle="collapse" data-target="#help"
+                    aria-expanded="true" aria-controls="help" i18n="Help">
+                    Help
+                </button>
+                </div>
+            </div>
+        </nav>
+        <div class="bg-secondary collapse" id="help">
+            <div class="container">
+                <div class="row">
+                    <div class="col-sm-8 col-md-7 py-4">
+                        <h4 class="text-white">About</h4>
+                        <p class="text-muted">Random text here</p>
+                    </div>
+                    <div class="col-sm-4 offset-md-1 py-4">
+                        <h4 class="text-white">Blah blah</h4>
+                        <p class="text-muted">More text</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="footer">
+            <div class="container-fluid">
+                <div class="row">
+                    <div class="col my-auto">
+                        <span i18n="Mode">Mode</span>:
+                        <span bind="app.mode.label">Repetition</span>
+                    </div>
+                    <div class="col-4 text-right">
+                        <div class="row no-gutters">
+                            <div class="col-10 text-right pr-2"><span i18n="NumberOfWords">Number of words</span>:</div>
+                            <div class="col text-left"><span bind="app.numberOfWords">0</span></div>
+                            <div class="w-100"></div>
+                            <div class="col-10 text-right pr-2"><span i18n="CorrectWords">Correct Words</span>:</div>
+                            <div class="col text-left"><span bind="app.correctWords">0 (100%)</span></div>
+                        </div>
+                    </div>
+                </div>
+                <div class="row border-top border-primary">
+                    <div id="message" class="col text-center h4" style="display: none">
+                        &nbsp;
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="modal fade" id="endDialog" role="dialog">
+            <div class="modal-dialog modal-dialog-centered" role="document">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title" i18n="End Session">End Session</h5>
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                            <span aria-hidden="true">&times;</span>
+                        </button>
+                    </div>
+                    <div class="modal-body">
+                        <div class="row p-4" i18n="Are you sure?">
+                            Are you sure?
+                        </div>
+                    </div>
+                    <div class="modal-footer">
+                        <button id="endSession" type="button" class="btn btn-secondary" data-dismiss="modal" i18n="End Session">End Session</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="modal fade" id="startDialog" role="dialog">
+            <div class="modal-dialog modal-dialog-centered" role="document">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title" i18n="Start New Session">Start New Session</h5>
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                            <span aria-hidden="true">&times;</span>
+                        </button>
+                    </div>
+                    <div class="modal-body">
+                        <div class="row p-4">
+                                <div class="col text-center">
+                                    <div i18n="Select text to work with">Select text to work with</div>
+                                    <div id="sessiontext-dropdown" class="btn-group display-inlineblock">
+                                        <button class="btn btn-secondary dropdown-toggle" type="button" id="sessiontext" data-toggle="dropdown"
+                                            aria-haspopup="true" aria-expanded="false" bind="app.selectedsessiontext">
+                                            &nbsp;
+                                        </button>
+                                        <div id="booklist" class="dropdown-menu" aria-labelledby="language">
+                                            <a class="dropdown-item" data-value="Default" href="#" i18n="Default">Default</a>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>                        
+                    </div>
+                    <div class="modal-footer">
+                        <div class="container">
+                            <div class="row text-center">
+                                <div class="col">
+                                    <button id="startRegularSession" type="button" class="btn btn-primary" data-dismiss="modal" i18n="Regular">Regular</button>
+                                </div>
+                                <div class="col">
+                                    <button id="startRepetitionSession" type="button" class="btn btn-primary" data-dismiss="modal" i18n="Repetition">Repetition</button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="modal fade" id="preferencesDialog" role="dialog">
+            <div class="modal-dialog modal-dialog-centered" role="document">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title" i18n="Preferences">Preferences</h5>
+                    </div>
+        
+                    <div class="modal-body">
+                        <div class="row p-4">
+                            <div class="col text-center">
+                                <div i18n="Language">Language</div>
+                                <div id="language-dropdown" class="btn-group display-inlineblock">
+                                    <button class="btn btn-secondary dropdown-toggle" type="button" id="language" data-toggle="dropdown"
+                                        aria-haspopup="true" aria-expanded="false" bind="settings.language">
+                                        English
+                                    </button>
+                                    <div class="dropdown-menu" aria-labelledby="language">
+                                        <a class="dropdown-item" data-value="en" href="#" i18n="English">English</a>
+                                        <a class="dropdown-item" data-value="sv" href="#" i18n="Swedish">Swedish</a>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row p-4 text-center">
+                            <div class="col">
+                                <button class="btn btn-primary pt-2" id="openbookfolder" i18n="Open data folder">Open data folder</button>
+                            </div>
+                        </div>
+                    </div>
+        
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-secondary" data-dismiss="modal" i18n="Close">Close</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </body>
+</html>

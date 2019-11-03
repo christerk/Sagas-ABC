@@ -1,0 +1,17 @@
+.header {
+    color: white;
+    background: #4473c4;
+}
+
+.footer {
+    position: absolute;
+    bottom: 0;
+    width: 100%;
+}
+
+.centerword {
+    position: absolute;
+    top: 0;
+    left: 0;
+    border: solid red 3px;
+}
