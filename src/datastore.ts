@@ -61,7 +61,7 @@ export class DataStore {
 
             for (let i=words.length-1; i>=0; i--) {
                 words[i] = this.filterWord(words[i]);
-                if (words[i].length == 0) {
+                if (!this.includeWord(words[i])) {
                     console.log('Spliced');
                     words.splice(i, 1);
                 }
@@ -69,6 +69,12 @@ export class DataStore {
             return words;
         }
         return null;
+    }
+
+    private includeWord(word: string): boolean {
+        let length = word.length;
+
+        return length > 0 && length < 16;
     }
 
     public loadRepetitionData(folder: string): Record<string, number> {
