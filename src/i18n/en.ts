@@ -13,6 +13,34 @@ export const translation = {
     "Open data folder": "Open data folder",
     "Close": "Close",
  
+    // -- HELP --
+    "Navigation": "Navigation",
+    "NEXT_WORD_CORRECT": "Correct Word",
+    "NEXT_WORD_FAIL": "Incorrect Word",
+    "NEXT_WORD_IMPROVED": "Improved Word",
+    "PREVIOUS_WORD": "Previous Word",
+    "END_SESSION": "End Session",
+    "UNDO": "Undo",
+
+    "DESC_NEXT_WORD_CORRECT": "Correct word, move to the next one.",
+    "DESC_NEXT_WORD_FAIL": "Incorrect word, register in repetition file.",
+    "DESC_NEXT_WORD_IMPROVED": "Only available in Repetition mode. Correct word, reduce count in repetition file.",
+    "DESC_PREVIOUS_WORD": "Go back to the previous word.",
+    "DESC_END_SESSION": "End the session.",
+    "DESC_UNDO": "Only available in repetition mode. Undo previous change to repetition file.",
+
+    "Space": "Space",
+    "Arrow Right": "Arrow Right",
+    "Arrow Down": "Arrow Down",
+    "Arrow Up": "Arrow Up",
+    "Arrow Left": "Arrow Left",
+    "Left Mouse Button": "Left Mouse Button",
+    "Right Mouse Button": "Right Mouse Button",
+    "Enter": "Enter",
+    "Delete": "Delete",
+    "Backspace": "Backspace",
+    "Escape": "Escape",
+
     // -- APP --
     "Help": "Help",
     "Start": "Start",

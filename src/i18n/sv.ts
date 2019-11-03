@@ -13,6 +13,36 @@ export const translation = {
     "Open data folder": "Öppna mapp för data",
     "Close": "Stäng",
 
+ 
+    // -- HELP --
+    "Navigation": "Navigering",
+    "NEXT_WORD_CORRECT": "Godkänt ord",
+    "NEXT_WORD_FAIL": "Felaktigt ord",
+    "NEXT_WORD_IMPROVED": "Förbättrat ord",
+    "PREVIOUS_WORD": "Föregående ord",
+    "END_SESSION": "Avsluta lektion",
+    "UNDO": "Ångra",
+
+
+    "DESC_NEXT_WORD_CORRECT": "Godkänt ord. Gå vidare till nästa ord.",
+    "DESC_NEXT_WORD_FAIL": "Ej godkänt ord, registera i repetitionsfil.",
+    "DESC_NEXT_WORD_IMPROVED": "Endast i repetitionsläge. Godkänt ord, minska vikt i repetitionsfil.",
+    "DESC_PREVIOUS_WORD": "Backa till föregående ord.",
+    "DESC_END_SESSION": "Avsluta lektion.",
+    "DESC_UNDO": "Endast i repetitionsläge. Ångra senaste förändringen i repetitionsfilen.",
+
+    "Space": "Mellanslag",
+    "Arrow Right": "Pil höger",
+    "Arrow Down": "Pil ned",
+    "Arrow Up": "Pil upp",
+    "Arrow Left": "Pil vänster",
+    "Left Mouse Button": "Vänster musknapp",
+    "Right Mouse Button": "Höger musknapp",
+    "Enter": "Enter",
+    "Delete": "Delete",
+    "Backspace": "Backsteg",
+    "Escape": "Escape",
+
     // -- APP --
     "Help": "Hjälp",
     "Start": "Start",
