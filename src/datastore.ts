@@ -1,6 +1,10 @@
 import * as fs from 'fs';
 import * as path from 'path';
 import { RemovePassword } from 'electron';
+import * as chardet from 'chardet';
+import * as iconv from 'iconv-lite';
+import { stringify } from 'querystring';
+
 export class DataStore {
     public constructor() {
 
@@ -55,9 +59,11 @@ export class DataStore {
     public loadBaseData(folder: string) {
         let filename = path.join(folder, "base.txt");
         if (fs.existsSync(filename)) {
-            let data = fs.readFileSync(filename, 'utf8');
+            let encoding = chardet.detectFileSync(filename);
+            let rawData = fs.readFileSync(filename);
+            let data = iconv.decode(rawData, encoding);
 
-            let words = data.split(' ');
+            let words = data.split(/\s+/);
 
             for (let i=words.length-1; i>=0; i--) {
                 words[i] = this.filterWord(words[i]);
@@ -108,6 +114,6 @@ export class DataStore {
     }
 
     private filterWord(word: string) {
-        return word.replace(/[^a-zA-Z0-9åäöÅÄÖ]/g, '').trim();
+    return word.replace(/[^a-zA-Z0-9åäöÅÄÖ*\/+-]/g, '').trim();
     }
 }

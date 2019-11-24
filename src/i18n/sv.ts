@@ -49,6 +49,7 @@ export const translation = {
     "Mode": "Läge",
     "NumberOfWords": "Antal ord hittills",
     "CorrectWords": "Varav godkända",
+    "RemainingWords": "Återstående ord",
     "OpenBookFolder": "Öppna bokmapp",
     "Hello": "Hej",
     "Regular": "Vanlig",

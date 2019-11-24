@@ -18,6 +18,7 @@ enum AppMode {
 
 export class Main {
     private currentWords: string[];
+    private shownWords: string[];
     private repetitionWords: Record<string, number>;
 
     private sessionInfo: {
@@ -142,6 +143,7 @@ export class Main {
 
     public constructor(app: Electron.App) {
         this.currentWords = [];
+        this.shownWords = [];
         this.repetitionWords = {};
         this.initializeSession();
         this.application = app;
@@ -213,12 +215,12 @@ export class Main {
             }
 
             this.initializeSession();
-            this.sendSessionInfo();
             let moreWords = this.nextWord();
             if (!moreWords) {
                 this.setMode(AppMode.Start);
                 this.setWord("👍", false);
             }
+            this.sendSessionInfo();
         });
 
         ipcMain.on('Nav', (event, message) => {
@@ -292,14 +294,49 @@ export class Main {
 
     public sendSessionInfo() {
         let pct = this.sessionInfo.words > 0 ? Math.floor( 100 * this.sessionInfo.accepted / this.sessionInfo.words) : 0;
+        let remaining:string = null;
+        if (this.appMode == AppMode.Regular) {
+            remaining = this.currentWords.length + "/" + (this.currentWords.length + this.shownWords.length);
+        } else {
+            let words = Object.keys(this.repetitionWords);
+            let repWords:number = 0;
+            let sumWords:number = 0;
+            words.forEach(w => {
+                sumWords += this.repetitionWords[w] ? this.repetitionWords[w] : 0;
+                repWords += this.repetitionWords[w] > 0 ? 1 : 0;
+            });
+            remaining = sumWords + " (" + repWords + ")";
+        }
         this.broadcast('state', {
             'app.numberOfWords': this.sessionInfo.words,
-            'app.correctWords': this.sessionInfo.accepted + " (" + pct + "%)"
+            'app.correctWords': this.sessionInfo.accepted + " (" + pct + "%)",
+            'app.remainingWords': remaining,
         })
     }    
 
     public getRandomWord() {
-        return this.currentWords[Math.floor(Math.random()*this.currentWords.length)];
+
+        let nextWord = null;
+        do {
+            // Cycle back word list
+            if (this.currentWords.length == 0 && this.shownWords.length > 0) {
+                this.currentWords = this.shownWords;
+                this.shownWords = [];
+            }
+
+            // Are we out of words?
+            if (this.currentWords.length == 0) {
+                return null;
+            }
+
+            // Find next word
+            nextWord = this.currentWords.splice(Math.floor(Math.random()*this.currentWords.length), 1)[0];
+            if (nextWord) {
+                this.shownWords.push(nextWord);
+            }
+        } while (nextWord != null && nextWord == this.sessionInfo.currentWord);
+
+        return nextWord;
     }
 
     public getRandomRepetitionWord() {
@@ -312,17 +349,20 @@ export class Main {
             }
         }
 
-        let x = Math.floor(Math.random()*numWords);
+        let nextWord = null;
+        do {
+            let x = Math.floor(Math.random()*numWords);
+            for (let word in this.repetitionWords) {
+                if (this.repetitionWords[word] > 0) {
+                    x -= this.repetitionWords[word];
 
-        for (let word in this.repetitionWords) {
-            if (this.repetitionWords[word] > 0) {
-                x -= this.repetitionWords[word];
-
-                if (x <= 0) {
-                    return word;
+                    if (x <= 0) {
+                        return word;
+                    }
                 }
             }
-        }
+        } while (this.repetitionWords.length > 1 && nextWord == this.sessionInfo.currentWord);
+
         return null;
     }
 

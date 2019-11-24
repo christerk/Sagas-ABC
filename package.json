@@ -1,6 +1,6 @@
 {
   "name": "sagas_abc",
-  "version": "1.0.0",
+  "version": "1.1.0",
   "description": "",
   "main": "src/app.js",
   "postinstall": "electron-builder install-app-deps",
@@ -22,6 +22,7 @@
   "author": "Christer Kaivo-oja <christer@fumbbl.com>",
   "license": "ISC",
   "devDependencies": {
+    "@types/chardet": "^0.8.0",
     "electron": "^7.0.1",
     "electron-builder": "^22.1.0",
     "jquery": "^3.4.1",
@@ -31,8 +32,10 @@
   "dependencies": {
     "@types/electron-settings": "^3.1.1",
     "bootstrap": "^4.3.1",
+    "chardet": "^0.8.0",
     "electron-settings": "^3.2.0",
     "i18next": "^19.0.0",
+    "iconv-lite": "^0.5.0",
     "jquery": "^3.4.1",
     "mocha": "^6.2.2",
     "popper.js": "^1.16.0"

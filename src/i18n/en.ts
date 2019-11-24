@@ -47,6 +47,7 @@ export const translation = {
     "Mode": "Mode",
     "NumberOfWords": "Number of Words",
     "CorrectWords": "Correct Words",
+    "RemainingWords": "Remaining Words",
     "OpenBookFolder": "Open Book Folder",
     "Hello": "Hello",
     "Regular": "Regular",
