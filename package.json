@@ -15,6 +15,13 @@
     "asar": false,
     "appId": "com.fumbbl.sagasabc",
     "productName": "Sagas ABC",
+    "mac": {
+      "icon": "./resources/ABC-App-Icon.icns",
+      "category": "public.app-category.education"
+    },
+    "win": {
+      "icon": "./resources/ABC-App-Icon.png"
+    },
     "nsis": {
       "oneClick": false
     }
